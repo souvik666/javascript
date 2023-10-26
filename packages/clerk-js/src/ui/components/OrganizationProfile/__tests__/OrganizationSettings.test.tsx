@@ -13,12 +13,12 @@ describe('OrganizationSettings', () => {
   it.skip('enables organization profile button and disables leave when user is the only admin', async () => {
     const adminsList: OrganizationMembershipResource[] = [createFakeMember({ id: '1', orgId: '1', role: 'admin' })];
     const domainList: OrganizationDomainResource[] = [
-      createFakeDomain({ id: '1', organizationId: '1', name: 'clerk.dev' }),
+      createFakeDomain({ id: '1', organizationId: '1', name: 'clerk.com' }),
     ];
 
     const { wrapper, fixtures } = await createFixtures(f => {
       f.withOrganizations();
-      f.withUser({ email_addresses: ['test@clerk.dev'], organization_memberships: [{ name: 'Org1' }] });
+      f.withUser({ email_addresses: ['test@clerk.com'], organization_memberships: [{ name: 'Org1' }] });
     });
 
     fixtures.clerk.organization?.getMemberships.mockReturnValue(Promise.resolve({ data: adminsList, total_count: 1 }));
@@ -40,12 +40,12 @@ describe('OrganizationSettings', () => {
 
   it('enables organization profile button and enables leave when user is admin and there is more', async () => {
     const domainList: OrganizationDomainResource[] = [
-      createFakeDomain({ id: '1', organizationId: '1', name: 'clerk.dev' }),
+      createFakeDomain({ id: '1', organizationId: '1', name: 'clerk.com' }),
     ];
 
     const { wrapper, fixtures } = await createFixtures(f => {
       f.withOrganizations();
-      f.withUser({ email_addresses: ['test@clerk.dev'], organization_memberships: [{ name: 'Org1' }] });
+      f.withUser({ email_addresses: ['test@clerk.com'], organization_memberships: [{ name: 'Org1' }] });
     });
 
     fixtures.clerk.organization?.getDomains.mockReturnValue(
@@ -68,7 +68,7 @@ describe('OrganizationSettings', () => {
     const { wrapper, fixtures } = await createFixtures(f => {
       f.withOrganizations();
       f.withUser({
-        email_addresses: ['test@clerk.dev'],
+        email_addresses: ['test@clerk.com'],
         organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
       });
     });
@@ -125,7 +125,7 @@ describe('OrganizationSettings', () => {
       const { wrapper } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
         });
       });
@@ -142,7 +142,7 @@ describe('OrganizationSettings', () => {
       const { wrapper } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', admin_delete_enabled: true }],
         });
       });
@@ -172,7 +172,7 @@ describe('OrganizationSettings', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', admin_delete_enabled: true }],
         });
       });
@@ -194,7 +194,7 @@ describe('OrganizationSettings', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1' }],
         });
       });
@@ -218,7 +218,7 @@ describe('OrganizationSettings', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
         });
       });

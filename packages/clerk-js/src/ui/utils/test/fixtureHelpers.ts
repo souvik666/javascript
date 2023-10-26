@@ -120,7 +120,7 @@ const createSignInFixtureHelpers = (baseClient: ClientJSON) => {
 
   const startSignInWithEmailAddress = (params?: SignInWithEmailAddressParams) => {
     const {
-      identifier = 'hello@clerk.dev',
+      identifier = 'hello@clerk.com',
       supportPassword = true,
       supportEmailCode,
       supportEmailLink,
@@ -132,13 +132,13 @@ const createSignInFixtureHelpers = (baseClient: ClientJSON) => {
       supported_identifiers: ['email_address'],
       supported_first_factors: [
         ...(supportPassword ? [{ strategy: 'password' }] : []),
-        ...(supportEmailCode ? [{ strategy: 'email_code', safe_identifier: identifier || 'n*****@clerk.dev' }] : []),
-        ...(supportEmailLink ? [{ strategy: 'email_link', safe_identifier: identifier || 'n*****@clerk.dev' }] : []),
+        ...(supportEmailCode ? [{ strategy: 'email_code', safe_identifier: identifier || 'n*****@clerk.com' }] : []),
+        ...(supportEmailLink ? [{ strategy: 'email_link', safe_identifier: identifier || 'n*****@clerk.com' }] : []),
         ...(supportResetPassword
           ? [
               {
                 strategy: 'reset_password_email_code',
-                safe_identifier: identifier || 'n*****@clerk.dev',
+                safe_identifier: identifier || 'n*****@clerk.com',
                 emailAddressId: 'someEmailId',
               },
             ]
@@ -206,9 +206,9 @@ const createSignInFixtureHelpers = (baseClient: ClientJSON) => {
         : {}),
       supported_identifiers: ['email_address', 'phone_number'],
       supported_second_factors: [
-        ...(supportPhoneCode ? [{ strategy: 'phone_code', safe_identifier: identifier || 'n*****@clerk.dev' }] : []),
-        ...(supportTotp ? [{ strategy: 'totp', safe_identifier: identifier || 'n*****@clerk.dev' }] : []),
-        ...(supportBackupCode ? [{ strategy: 'backup_code', safe_identifier: identifier || 'n*****@clerk.dev' }] : []),
+        ...(supportPhoneCode ? [{ strategy: 'phone_code', safe_identifier: identifier || 'n*****@clerk.com' }] : []),
+        ...(supportTotp ? [{ strategy: 'totp', safe_identifier: identifier || 'n*****@clerk.com' }] : []),
+        ...(supportBackupCode ? [{ strategy: 'backup_code', safe_identifier: identifier || 'n*****@clerk.com' }] : []),
       ],
       user_data: { ...(createUserFixture() as any) },
     } as SignInJSON;
@@ -229,7 +229,7 @@ const createSignUpFixtureHelpers = (baseClient: ClientJSON) => {
   };
 
   const startSignUpWithEmailAddress = (params?: SignUpWithEmailAddressParams) => {
-    const { emailAddress = 'hello@clerk.dev', supportEmailLink = true, supportEmailCode = true } = params || {};
+    const { emailAddress = 'hello@clerk.com', supportEmailLink = true, supportEmailCode = true } = params || {};
     baseClient.sign_up = {
       id: 'sua_2HseAXFGN12eqlwARPMxyyUa9o9',
       status: 'missing_requirements',
@@ -266,7 +266,7 @@ const createAuthConfigFixtureHelpers = (environment: EnvironmentJSON) => {
 const createDisplayConfigFixtureHelpers = (environment: EnvironmentJSON) => {
   const dc = environment.display_config;
   const withSupportEmail = (opts?: { email: string }) => {
-    dc.support_email = opts?.email || 'support@clerk.dev';
+    dc.support_email = opts?.email || 'support@clerk.com';
   };
   const withoutClerkBranding = () => {
     dc.branded = false;

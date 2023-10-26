@@ -12,7 +12,7 @@ describe('OrganizationSwitcher', () => {
   it('renders component', async () => {
     const { wrapper } = await createFixtures(f => {
       f.withOrganizations();
-      f.withUser({ email_addresses: ['test@clerk.dev'] });
+      f.withUser({ email_addresses: ['test@clerk.com'] });
     });
     const { queryByRole } = await act(() => render(<OrganizationSwitcher />, { wrapper }));
     expect(queryByRole('button')).toBeDefined();
@@ -22,7 +22,7 @@ describe('OrganizationSwitcher', () => {
     it('shows the personal workspace when enabled', async () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
-        f.withUser({ email_addresses: ['test@clerk.dev'] });
+        f.withUser({ email_addresses: ['test@clerk.com'] });
       });
       props.setProps({ hidePersonal: false });
       const { getByText } = await act(() => render(<OrganizationSwitcher />, { wrapper }));
@@ -32,7 +32,7 @@ describe('OrganizationSwitcher', () => {
     it('does not show the personal workspace when disabled', async () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
-        f.withUser({ email_addresses: ['test@clerk.dev'] });
+        f.withUser({ email_addresses: ['test@clerk.com'] });
       });
       props.setProps({ hidePersonal: true });
       const { queryByText, getByRole, userEvent, getByText } = render(<OrganizationSwitcher />, { wrapper });
@@ -80,7 +80,7 @@ describe('OrganizationSwitcher', () => {
         f.withOrganizations();
         f.withOrganizationDomains();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', id: '1', role: 'admin' }],
         });
       });
@@ -120,7 +120,7 @@ describe('OrganizationSwitcher', () => {
     it('opens the organization switcher popover when clicked', async () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
-        f.withUser({ email_addresses: ['test@clerk.dev'], create_organization_enabled: true });
+        f.withUser({ email_addresses: ['test@clerk.com'], create_organization_enabled: true });
       });
 
       props.setProps({ hidePersonal: true });
@@ -132,7 +132,7 @@ describe('OrganizationSwitcher', () => {
     it('lists all organizations the user belongs to', async () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
-        f.withUser({ email_addresses: ['test@clerk.dev'], organization_memberships: ['Org1', 'Org2'] });
+        f.withUser({ email_addresses: ['test@clerk.com'], organization_memberships: ['Org1', 'Org2'] });
       });
 
       props.setProps({ hidePersonal: false });
@@ -151,7 +151,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: role as MembershipRole }],
         });
       });
@@ -167,7 +167,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, fixtures, props } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
         });
       });
@@ -183,7 +183,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, fixtures, props } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
           create_organization_enabled: true,
         });
@@ -200,7 +200,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, props } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
           create_organization_enabled: false,
         });
@@ -215,7 +215,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
           create_organization_enabled: false,
         });
@@ -259,7 +259,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [{ name: 'Org1', role: 'basic_member' }],
           create_organization_enabled: false,
         });
@@ -305,7 +305,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, props, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [
             { name: 'Org1', role: 'basic_member' },
             { name: 'Org2', role: 'admin' },
@@ -333,7 +333,7 @@ describe('OrganizationSwitcher', () => {
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withOrganizations();
         f.withUser({
-          email_addresses: ['test@clerk.dev'],
+          email_addresses: ['test@clerk.com'],
           organization_memberships: [
             { name: 'Org1', role: 'basic_member' },
             { name: 'Org2', role: 'admin' },

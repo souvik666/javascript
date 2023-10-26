@@ -26,11 +26,11 @@ describe('SignInFactorOne', () => {
     const { wrapper } = await createFixtures(f => {
       f.withEmailAddress({ first_factors: ['email_code', 'email_link'] });
       f.withPassword();
-      f.startSignInWithEmailAddress({ supportEmailCode: true, supportEmailLink: true, identifier: 'test@clerk.dev' });
+      f.startSignInWithEmailAddress({ supportEmailCode: true, supportEmailLink: true, identifier: 'test@clerk.com' });
     });
 
     render(<SignInFactorOne />, { wrapper });
-    screen.getByText('test@clerk.dev');
+    screen.getByText('test@clerk.com');
   });
 
   it('prefills the phone number if the identifier is a phone number', async () => {
@@ -124,7 +124,7 @@ describe('SignInFactorOne', () => {
       });
 
       it('should render the other methods component when clicking on "Forgot password"', async () => {
-        const email = 'test@clerk.dev';
+        const email = 'test@clerk.com';
         const { wrapper } = await createFixtures(f => {
           f.withEmailAddress();
           f.withPassword();
@@ -581,7 +581,7 @@ describe('SignInFactorOne', () => {
 
   describe('Use another method', () => {
     it('should render the other authentication methods list component when clicking on "Use another method"', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper } = await createFixtures(f => {
         f.withEmailAddress({ first_factors: ['email_code', 'email_link'] });
         f.withPassword();
@@ -596,7 +596,7 @@ describe('SignInFactorOne', () => {
     });
 
     it('"Use another method" should not exist if only the current strategy is available', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper } = await createFixtures(f => {
         f.withEmailAddress({ first_factors: [], verifications: [] });
         f.withPassword();
@@ -628,7 +628,7 @@ describe('SignInFactorOne', () => {
     });
 
     it('should list all the enabled first factor methods', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withEmailAddress();
         f.withPassword();
@@ -644,7 +644,7 @@ describe('SignInFactorOne', () => {
     });
 
     it('should list enabled first factor methods without the current one', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withSocialProvider({ provider: 'google' });
         f.withEmailAddress();
@@ -678,7 +678,7 @@ describe('SignInFactorOne', () => {
     });
 
     it('clicking the email link method should show the magic link screen', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withEmailAddress();
         f.withPassword();
@@ -702,7 +702,7 @@ describe('SignInFactorOne', () => {
     });
 
     it('clicking the email code method should show the email code input', async () => {
-      const email = 'test@clerk.dev';
+      const email = 'test@clerk.com';
       const { wrapper, fixtures } = await createFixtures(f => {
         f.withEmailAddress();
         f.withPassword();
