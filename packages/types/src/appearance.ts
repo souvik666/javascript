@@ -639,7 +639,7 @@ export type Layout = {
   privacyPageUrl?: string;
   /**
    * This option enables the shimmer animation for the avatars of <UserButton/> and <OrganizationSwitcher/>
-   * @default false
+   * @default true
    */
   shimmer?: boolean;
 };
