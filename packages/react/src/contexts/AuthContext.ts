@@ -8,4 +8,10 @@ export const [AuthContext, useAuthContext] = createContextAndHook<{
   orgId: string | null | undefined;
   orgRole: MembershipRole | null | undefined;
   orgSlug: string | null | undefined;
-}>('AuthContext');
+}>('AuthContext', {
+  assertCtxFn: contextVal => {
+    if (!contextVal) {
+      throw new Error('useAuth was used outside of <ClerkProvider>');
+    }
+  },
+});
