@@ -1,5 +1,25 @@
 # Change Log
 
+## 5.0.0-beta.34
+
+### Minor Changes
+
+- Expose debug headers in response for handshake / signed-out states from SDKs using headers returned from `authenticateRequest()` ([#2898](https://github.com/clerk/javascript/pull/2898)) by [@dimkl](https://github.com/dimkl)
+
+### Patch Changes
+
+- Updated dependencies [[`2964f8a47`](https://github.com/clerk/javascript/commit/2964f8a47e473fa8457a27104adb4d008613a0e3)]:
+  - @clerk/backend@1.0.0-beta.28
+
+## 5.0.0-beta.33
+
+### Patch Changes
+
+- Using auth().protect inside clerkMiddleware will perform a redirection instead of throwing a not found error when internal navigation in pages router occurs and the user is unauthenticated. ([#2942](https://github.com/clerk/javascript/pull/2942)) by [@panteliselef](https://github.com/panteliselef)
+
+- Updated dependencies [[`c86f73be3`](https://github.com/clerk/javascript/commit/c86f73be382d01ec5f0ff5922ad907f429e63a58)]:
+  - @clerk/clerk-react@5.0.0-beta.30
+
 ## 5.0.0-beta.32
 
 ### Patch Changes

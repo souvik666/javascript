@@ -1,6 +1,6 @@
 {
   "name": "@clerk/elements",
-  "version": "0.1.19",
+  "version": "0.1.23",
   "description": "Clerk Elements",
   "keywords": [
     "clerk",
@@ -51,9 +51,10 @@
     "dist"
   ],
   "scripts": {
-    "app:build": "(cd examples/nextjs && npm run build)",
-    "app:dev": "(cd examples/nextjs && npm run dev)",
-    "app:dev:debug": "(cd examples/nextjs && NEXT_PUBLIC_CLERK_ELEMENTS_DEBUG=true npm run dev)",
+    "app:build": "(cd examples/nextjs && npm run build --turbo)",
+    "app:dev": "(cd examples/nextjs && npm run dev --turbo)",
+    "app:dev:debug": "(cd examples/nextjs && NEXT_PUBLIC_CLERK_ELEMENTS_DEBUG=true npm run dev --turbo)",
+    "app:dev:debug:server": "(cd examples/nextjs && NEXT_PUBLIC_CLERK_ELEMENTS_DEBUG=true CLERK_ELEMENTS_DEBUG_SERVER=true npm run dev --turbo)",
     "app:e2e": "(cd examples/nextjs && npm run e2e)",
     "app:lint": "(cd examples/nextjs && npm run lint)",
     "build": "tsup",
@@ -74,16 +75,16 @@
     "xstate": "^5.7.1"
   },
   "devDependencies": {
-    "@clerk/clerk-react": "5.0.0-beta.29",
+    "@clerk/clerk-react": "5.0.0-beta.30",
     "@clerk/shared": "2.0.0-beta.19",
-    "@clerk/types": "^4.0.0-beta.19",
+    "@clerk/types": "^4.0.0-beta.20",
     "@types/node": "^18.17.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "eslint-config-custom": "*",
     "next": "^14.0.4",
     "tslib": "2.4.1",
-    "tsup": "^8.0.1",
+    "tsup": "*",
     "type-fest": "^4.9.0",
     "typescript": "^5.3.3"
   },
@@ -95,6 +96,12 @@
     "react-dom": ">=18"
   },
   "peerDependenciesMeta": {
+    "@clerk/clerk-react": {
+      "optional": true
+    },
+    "@clerk/shared": {
+      "optional": true
+    },
     "next": {
       "optional": true
     }
